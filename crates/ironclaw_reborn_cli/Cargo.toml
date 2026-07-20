@@ -1,6 +1,6 @@
 [package]
 name = "ironclaw_reborn_cli"
-version = "0.1.0"
+version = "1.0.0-rc.1"
 edition = "2024"
 rust-version.workspace = true
 description = "Standalone IronClaw Reborn binary"
@@ -13,10 +13,16 @@ publish = false
 [package.metadata.ironclaw]
 layer = "app"
 
-# Keep disabled until #3483 resolves cargo-dist tag/versioning + Windows WiX
-# packaging for the standalone Reborn binary.
 [package.metadata.dist]
-dist = false
+dist = true
+display-name = "ironclaw"
+features = ["libsql", "postgres", "inmemory-turn-state"]
+
+[package.metadata.wix]
+upgrade-guid = "D0156E61-BA37-451E-8AB9-1A2ECCCFA48F"
+path-guid = "F90B6EA6-87F7-499B-BB19-CF55DE1EB339"
+license = false
+eula = false
 
 [features]
 # libsql is the default storage backend: a file-backed local database needs
